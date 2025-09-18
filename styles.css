@@ -1164,7 +1164,7 @@ p {
     
     .hero-with-bg {
         height: 100vh;
-        background-size: 80%;
+        background-size: 100%;
         background-position: center 40%;
     }
     
@@ -1256,7 +1256,7 @@ p {
     
     .hero-with-bg {
         height: 100vh;
-        background-size: 80%;
+        background-size: 100%;
         background-position: center 40%;
     }
     
