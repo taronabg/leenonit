@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Leenonit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .back-link:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            cursor: pointer;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%;
+            max-height: 80%;
+            width: 600px;
+            height: 600px;
+            cursor: default;
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+        
+        .close-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .zoom-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 2001;
+        }
+        
+        .zoom-btn {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .zoom-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .gallery-container {
+            padding: 80px 20px 40px;
+            background: #000000;
+            min-height: 100vh;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 100;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #111;
+            aspect-ratio: 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .back-link {
+                top: 15px;
+                left: 15px;
+                padding: 8px 12px;
+                font-size: 1rem;
+            }
+            
+            .gallery-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+            
+            .modal-content {
+                width: 90%;
+                height: 400px;
+                max-width: 90%;
+                max-height: 70%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-container {
+                padding: 70px 15px 30px;
+            }
+            
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                height: 350px;
+                max-width: 95%;
+                max-height: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <div class="gallery-container">
+        <h1 class="gallery-title">Gallery</h1>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openModal('leen.HEIC')">
+                <img src="leen.HEIC" alt="Leenonit">
+            </div>
+            <div class="gallery-item" onclick="openModal('leen2.JPG')">
+                <img src="leen2.JPG" alt="Leenonit">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass1.heic')">
+                <img src="glass1.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass2.heic')">
+                <img src="glass2.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass3.heic')">
+                <img src="glass3.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass4.heic')">
+                <img src="glass4.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass5.heic')">
+                <img src="glass5.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass6.heic')">
+                <img src="glass6.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass7.heic')">
+                <img src="glass7.heic" alt="Glass Collection">
+            </div>
+            <div class="gallery-item" onclick="openModal('glass8.heic')">
+                <img src="glass8.heic" alt="Glass Collection">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomIn()">+</button>
+                <button class="zoom-btn" onclick="zoomOut()">−</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentZoom = 1;
+        
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            currentZoom = 1;
+            modalImage.style.transform = `scale(${currentZoom})`;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function zoomIn() {
+            currentZoom = Math.min(currentZoom + 0.25, 3);
+            document.getElementById('modalImage').style.transform = `scale(${currentZoom})`;
+        }
+        
+        function zoomOut() {
+            currentZoom = Math.max(currentZoom - 0.25, 0.5);
+            document.getElementById('modalImage').style.transform = `scale(${currentZoom})`;
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
