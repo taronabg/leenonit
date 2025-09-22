@@ -142,6 +142,7 @@
             border-radius: 12px;
             background: #111;
             aspect-ratio: 1;
+            cursor: pointer;
         }
         
         .gallery-item img {
@@ -153,6 +154,30 @@
         
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+        
+        .product-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 20px 15px 15px;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 100;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 100;
+            color: #ffffff;
         }
         
         @media (max-width: 768px) {
@@ -212,34 +237,74 @@
         
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openModal('leen.HEIC')">
-                <img src="leen.HEIC" alt="Leenonit">
+                <img src="leen.HEIC" alt="Popstar Bodysuit">
+                <div class="product-info">
+                    <div class="product-name">Popstar Bodysuit</div>
+                    <div class="product-price">$45</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('leen2.JPG')">
-                <img src="leen2.JPG" alt="Leenonit">
+                <img src="leen2.JPG" alt="Lace Me Up Jumpsuit">
+                <div class="product-info">
+                    <div class="product-name">Lace Me Up Jumpsuit</div>
+                    <div class="product-price">$65</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass1.heic')">
-                <img src="glass1.heic" alt="Glass Collection">
+                <img src="glass1.heic" alt="Can't See Me Shades">
+                <div class="product-info">
+                    <div class="product-name">Can't See Me Shades</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass2.heic')">
-                <img src="glass2.heic" alt="Glass Collection">
+                <img src="glass2.heic" alt="Prissy Glasses">
+                <div class="product-info">
+                    <div class="product-name">Prissy Glasses</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass3.heic')">
-                <img src="glass3.heic" alt="Glass Collection">
+                <img src="glass3.heic" alt="Moca Glasses">
+                <div class="product-info">
+                    <div class="product-name">Moca Glasses</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass4.heic')">
-                <img src="glass4.heic" alt="Glass Collection">
+                <img src="glass4.heic" alt="Champion Glasses">
+                <div class="product-info">
+                    <div class="product-name">Champion Glasses</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass5.heic')">
-                <img src="glass5.heic" alt="Glass Collection">
+                <img src="glass5.heic" alt="Midnight Shades">
+                <div class="product-info">
+                    <div class="product-name">Midnight Shades</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass6.heic')">
-                <img src="glass6.heic" alt="Glass Collection">
+                <img src="glass6.heic" alt="Mirror Shades">
+                <div class="product-info">
+                    <div class="product-name">Mirror Shades</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass7.heic')">
-                <img src="glass7.heic" alt="Glass Collection">
+                <img src="glass7.heic" alt="Smokey Shades">
+                <div class="product-info">
+                    <div class="product-name">Smokey Shades</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
             <div class="gallery-item" onclick="openModal('glass8.heic')">
-                <img src="glass8.heic" alt="Glass Collection">
+                <img src="glass8.heic" alt="Cotton Candy Shades">
+                <div class="product-info">
+                    <div class="product-name">Cotton Candy Shades</div>
+                    <div class="product-price">$15</div>
+                </div>
             </div>
         </div>
     </div>
